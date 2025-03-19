@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to IET-DAVV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color:#002d80;
+            color: white;
+            padding: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            width: 100px;
+        }
+        .logo div {
+            margin-left: 10px;
+            text-align: left;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .carousel {
+            position: relative;
+            width: 80%;
+            margin: 20px auto;
+            overflow: hidden;
+            border: 5px solid #006b80;
+            border-radius: 10px;
+        }
+        .slides img {
+            width: 100%;
+            height: auto;
+            display: none;
+        }
+        .slides img.active {
+            display: block;
+        }
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .carousel-buttons button {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .news-section, .events-section {
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .news-section h2, .events-section h2 {
+            color: #803500;
+        }
+        footer {
+            background-color: #804d00;
+            color: white;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./Devi_Ahilya_Vishwavidyalaya_Logo.png" alt="Institute Logo">
+            <div>
+                <h1>Institute Of Engineering and Technology</h1>
+                <h2>Devi Ahilya Vishwavidyalaya</h2>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Academics</a></li>
+            <li><a href="#">Admission</a></li>
+            <li><a href="#">People</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section class="carousel">
+            <div class="slides">
+                <img src="placement.jpg" alt="Placement Opportunities" class="active">
+                <img src="campus1.jpg" alt="Beautiful Campus View">
+                <img src="library.jpg" alt="Modern Library">
+                <img src="lab.jpg" alt="Advanced Laboratories">
+                <img src="event.jpg" alt="College Events">
+            </div>
+            <div class="carousel-buttons">
+                <button id="prev">&#10094;</button>
+                <button id="next">&#10095;</button>
+            </div>
+        </section>
+        <section class="news-section">
+            <h2>Latest News</h2>
+            <ul>
+                <li>New Research Grant Awarded to IET Faculty</li>
+                <li>Upcoming Workshop on Artificial Intelligence</li>
+                <li>IET Ranked Among Top Engineering Colleges in India</li>
+                <li>Annual Cultural Fest "TechVibes" to be Held Next Month</li>
+            </ul>
+        </section>
+        <section class="events-section">
+            <h2>Upcoming Events</h2>
+            <ul>
+                <li>Tech Symposium - 15th November 2023</li>
+                <li>Alumni Meet - 20th November 2023</li>
+                <li>Placement Drive - 25th November 2023</li>
+                <li>Sports Fest - 1st December 2023</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Institute of Engineering and Technology, Devi Ahilya Vishwavidyalaya, Indore</p>
+        <p>Contact: <a href="mailto:iet@davv.ac.in">iet@davv.ac.in</a> | Phone: <a href="tel:+919685503233">+91-968-5503233</a></p>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let ci = 0;
+            const slides = document.querySelectorAll(".slides img");
+            const prev = document.getElementById("prev");
+            const next = document.getElementById("next");
+            
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle("active", i === index);
+                });
+            }
+            
+            function nextSlide() {
+                ci = (ci + 1) % slides.length;
+                showSlide(ci);
+            }
+            
+            function prevSlide() {
+                ci = (ci - 1 + slides.length) % slides.length;
+                showSlide(ci);
+            }
+            
+            next.addEventListener("click", nextSlide);
+            prev.addEventListener("click", prevSlide);
+            setInterval(nextSlide, 3000);
+            showSlide(ci);
+        });
+    </script>
+</body>
+</html>
