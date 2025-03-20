@@ -1,0 +1,66 @@
+Create a Basic Java Servlet That Handles a GET Request and Displays a Welcome Message
+java
+Copy
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class WelcomeServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Set the response content type
+        response.setContentType("text/html");
+
+        // Get output stream for the response
+        PrintWriter out = response.getWriter();
+
+        // Display a welcome message
+        out.println("<html><body>");
+        out.println("<h1>Welcome to the Servlet Example!</h1>");
+        out.println("</body></html>");
+    }
+}
+Implement doGet() and doPost() Methods
+java
+Copy
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class DemoServlet extends HttpServlet {
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Handle GET request
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        out.println("<h1>GET Method Called</h1>");
+        out.println("</body></html>");
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Handle POST request
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        out.println("<h1>POST Method Called</h1>");
+        out.println("</body></html>");
+    }
+}
+Demonstrate the Use of HttpServletRequest and HttpServletResponse
+Retrieving Query Parameters:
+java
+Copy
+String param = request.getParameter("paramName");
+Displaying Client Request Details:
+java
+Copy
+String ipAddress = request.getRemoteAddr();
+String userAgent = request.getHeader("User-Agent");
+
+PrintWriter out = response.getWriter();
+out.println("<html><body>");
+out.println("<p>IP Address: " + ipAddress + "</p>");
+out.println("<p>User-Agent: " + userAgent + "</p>");
+out.println("</body></html>");
