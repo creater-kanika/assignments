@@ -1,0 +1,47 @@
+ To-Do List App
+html
+Copy
+<ul id="todoList"></ul>
+<input type="text" id="newTask" placeholder="Add new task">
+<button onclick="addTask()">Add Task</button>
+
+<script>
+    function addTask() {
+        let task = document.getElementById("newTask").value;
+        if (task) {
+            let li = document.createElement("li");
+            li.textContent = task;
+            let deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.onclick = function() {
+                li.remove();
+            };
+            li.appendChild(deleteButton);
+            document.getElementById("todoList").appendChild(li);
+            document.getElementById("newTask").value = "";
+        }
+    }
+</script>
+ Simple Chatbot
+html
+Copy
+<input type="text" id="userInput" placeholder="Ask me anything">
+<button onclick="chatbotResponse()">Ask</button>
+<p id="response"></p>
+
+<script>
+    function chatbotResponse() {
+        let userInput = document.getElementById("userInput").value.toLowerCase();
+        let response = "";
+
+        if (userInput.includes("hello")) {
+            response = "Hi! How can I help you?";
+        } else if (userInput.includes("your name")) {
+            response = "I am a simple chatbot.";
+        } else {
+            response = "Sorry, I don't understand that.";
+        }
+
+        document.getElementById("response").innerHTML = response;
+    }
+</script>
