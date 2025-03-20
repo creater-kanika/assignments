@@ -1,0 +1,18 @@
+Create a Login System with Servlet Communication
+LoginServlet:
+
+java
+Copy
+public class LoginServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        if ("admin".equals(username) && "password".equals(password)) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("WelcomeServlet");
+            dispatcher.forward(request, response);
+        } else {
+            response.sendRedirect("login.html?error=Invalid credentials");
+        }
+    }
+}
