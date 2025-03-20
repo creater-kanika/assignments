@@ -1,0 +1,21 @@
+Session Tracking Using Cookies
+java
+Copy
+Cookie usernameCookie = new Cookie("username", "John");
+response.addCookie(usernameCookie);
+To retrieve the username from a cookie:
+
+java
+Copy
+Cookie[] cookies = request.getCookies();
+for (Cookie cookie : cookies) {
+    if (cookie.getName().equals("username")) {
+        String username = cookie.getValue();
+    }
+}
+Session Management Using HttpSession
+java
+Copy
+HttpSession session = request.getSession();
+session.setAttribute("userTheme", "dark");
+String theme = (String) session.getAttribute("userTheme");
