@@ -1,0 +1,220 @@
+1. JavaScript Implementation
+A. Variables, Functions, Conditions, and Loops
+1. Declaring and Using Variables
+
+javascript
+Copy
+// Declaring variables using var, let, and const
+var oldVariable = "I am declared using var";
+let newVariable = "I am declared using let";
+const constantVariable = "I am constant";
+
+// Changing values of variables
+newVariable = "Now I am a new value";
+// constantVariable = "Trying to change"; // This will cause an error
+
+
+Functions for Basic Calculations
+
+Example: BMI Calculator
+
+javascript
+Copy
+function calculateBMI(weight, height) {
+    let bmi = weight / (height * height);
+    return bmi;
+}
+
+// Example usage
+let weight = 70; // kg
+let height = 1.75; // meters
+let bmi = calculateBMI(weight, height);
+console.log(Your BMI is: ${bmi});
+
+3. Conditions (if-else, switch-case)
+
+Example: Age Validation
+
+javascript
+Copy
+let age = 25;
+
+if (age >= 18) {
+    console.log("You are an adult.");
+} else {
+    console.log("You are a minor.");
+}
+
+// Switch-Case Example
+let day = "Monday";
+switch(day) {
+    case "Monday":
+        console.log("Start of the week");
+        break;
+    case "Friday":
+        console.log("End of the work week");
+        break;
+    default:
+        console.log("Just another day");
+}
+4. Loops (for, while, do-while)
+
+Example: Generating a List of Users Dynamically
+
+javascript
+Copy
+let users = ["Alice", "Bob", "Charlie", "Dave"];
+
+// Using for loop
+for (let i = 0; i < users.length; i++) {
+    console.log(users[i]);
+}
+
+// Using while loop
+let i = 0;
+while (i < users.length) {
+    console.log(users[i]);
+    i++;
+}
+
+// Using do-while loop
+let j = 0;
+do {
+    console.log(users[j]);
+    j++;
+} while (j < users.length);
+B. Pop-up Boxes (Alerts, Confirm, and Prompt)
+1. Alert Box
+
+javascript
+Copy
+function submitForm() {
+    alert("Form submitted successfully!");
+}
+2. Confirmation Box
+
+javascript
+Copy
+function deleteItem() {
+    let confirmation = confirm("Are you sure you want to delete this item?");
+    if (confirmation) {
+        console.log("Item deleted");
+    } else {
+        console.log("Deletion cancelled");
+    }
+}
+3. Prompt Box
+
+javascript
+Copy
+function askUser() {
+    let userInput = prompt("Please enter your name:");
+    if (userInput != null) {
+        document.getElementById("output").innerHTML = "Hello " + userInput;
+    }
+}
+C. Event Handling & DOM Manipulation
+1. Change Text or Style When Button is Clicked
+
+javascript
+Copy
+function changeText() {
+    document.getElementById("text").innerHTML = "Text has been changed!";
+}
+
+function changeStyle() {
+    document.getElementById("text").style.color = "red";
+}
+2. Implement Hover Effects
+
+javascript
+Copy
+document.getElementById("hoverElement").onmouseover = function() {
+    document.getElementById("hoverElement").style.backgroundColor = "lightblue";
+};
+
+document.getElementById("hoverElement").onmouseout = function() {
+    document.getElementById("hoverElement").style.backgroundColor = "";
+};
+3. Create a Dynamic List (Add/Remove Items)
+
+javascript
+Copy
+let list = document.getElementById("dynamicList");
+
+function addItem() {
+    let newItem = document.createElement("li");
+    newItem.textContent = "New Item";
+    list.appendChild(newItem);
+}
+
+function removeItem() {
+    list.removeChild(list.lastElementChild);
+}
+D. Forms & Validation (Using Regular Expressions)
+1. Form Validation (Name, Email, Phone Number, Password)
+
+html
+Copy
+<form id="registrationForm">
+    Name: <input type="text" id="name" required><br><br>
+    Email: <input type="email" id="email" required><br><br>
+    Phone: <input type="tel" id="phone" required><br><br>
+    Password: <input type="password" id="password" required><br><br>
+    <button type="submit">Submit</button>
+</form>
+javascript
+Copy
+// Form validation with regular expressions
+document.getElementById("registrationForm").onsubmit = function(event) {
+    event.preventDefault(); // Prevent form submission
+    
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let password = document.getElementById("password").value;
+
+    let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    let phoneRegex = /^[0-9]{10}$/;
+    let passwordRegex = /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,}$/;
+
+    if (!email.match(emailRegex)) {
+        alert("Invalid email format");
+    } else if (!phone.match(phoneRegex)) {
+        alert("Phone number should be 10 digits");
+    } else if (!password.match(passwordRegex)) {
+        alert("Password should contain upper and lower case letters, a number, and a special character.");
+    } else {
+        alert("Form submitted successfully!");
+    }
+};
+E. JavaScript Standard Objects & AJAX
+1. Using the Date Object
+
+javascript
+Copy
+let currentDate = new Date();
+let time = currentDate.toLocaleTimeString();
+document.getElementById("dateDisplay").innerHTML = "Current time: " + time;
+2. Using the Math Object (Random Number Generator)
+
+javascript
+Copy
+let randomNumber = Math.floor(Math.random() * 100) + 1; // Random number between 1 and 100
+console.log("Random number: " + randomNumber);
+3. Using AJAX to Fetch Data (Weather Example)
+
+javascript
+Copy
+function fetchWeather() {
+    let apiKey = "your_api_key_here";
+    let city = "London";
+    let url = https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("weather").innerHTML = Temperature in ${city}: ${data.main.temp}°C;
+        })
+        .catch(error => console.error('Error fetching weather data:', error));
+}
