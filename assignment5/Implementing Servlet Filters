@@ -1,0 +1,23 @@
+Create a Logging Filter
+java
+Copy
+public class LoggingFilter implements Filter {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        String ipAddress = request.getRemoteAddr();
+        System.out.println("Request from IP: " + ipAddress + " at " + new java.util.Date());
+        chain.doFilter(request, response);
+    }
+}
+Create an Authentication Filter
+java
+Copy
+public class AuthenticationFilter implements Filter {
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+        HttpSession session = ((HttpServletRequest) request).getSession(false);
+        if (session == null || session.getAttribute("user") == null) {
+            ((HttpServletResponse) response).sendRedirect("login.html");
+        } else {
+            chain.doFilter(request, response);
+        }
+    }
+}
