@@ -13,8 +13,6 @@ Scalability: Servlets handle a higher number of requests simultaneously and scal
 State Management: Servlets have built-in support for session management, unlike CGI, which requires manual implementation of session tracking.
 Practical Implementation
 CGI Program (Python Example) to Handle a Form Submission:
-python
-Copy
 #!/usr/bin/env python3
 import cgi
 
@@ -38,8 +36,6 @@ This script handles form submissions and displays the submitted name and email.
 Servlet Implementation to Handle the Same Form Submission:
 Form HTML (index.html):
 
-html
-Copy
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,8 +53,6 @@ Copy
 </html>
 Servlet Code (FormServlet.java):
 
-java
-Copy
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
